@@ -2,7 +2,7 @@ from aiogram import Bot, Dispatcher, Router
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.types import CallbackQuery, Message, User
+from aiogram.types import CallbackQuery, Message, User, List
 from aiogram_dialog import Dialog, DialogManager, StartMode, Window, setup_dialogs
 from aiogram_dialog.widgets.kbd import Button, Row
 from aiogram_dialog.widgets.text import Const, Format
@@ -67,13 +67,12 @@ start_dialog = Dialog(
 
 
 # Это классический хэндлер, который будет срабатывать на команду /start
-@router.message(CommandStart())
+@router.message()
 async def command_start_process(message: Message, dialog_manager: DialogManager):
     await dialog_manager.start(state=StartSG.start, mode=StartMode.RESET_STACK)
 
 
-dp.include_router(start_dialog)
 dp.include_router(router)
-# dp.include_router(start_dialog)
+dp.include_router(start_dialog)
 setup_dialogs(dp)
 dp.run_polling(bot)
