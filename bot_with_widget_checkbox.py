@@ -47,7 +47,7 @@ start_dialog = Dialog(
         Const(text='Сейчас дополнительного текста нет', when='not_checked'),
         Const(text='Дополнительный текст есть:\n<b>Это дополнительный текст</b>', when='checked'),
         Checkbox(
-            checked_text=Const('[✔️] Отключить'),
+            checked_text=Const('[V️] Отключить'),
             unchecked_text=Const('[ ] Включить'),
             id='checkbox',
             default=False,
